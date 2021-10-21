@@ -1,7 +1,9 @@
 package dev.demmage.context4j.exceptions;
 
-public class NotImplementedException extends RuntimeException {
+public class NotImplementedException extends Context4jException {
+
     public NotImplementedException() {
+        super();
     }
 
     public NotImplementedException(String message) {

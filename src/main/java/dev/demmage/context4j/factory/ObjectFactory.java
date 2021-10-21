@@ -1,24 +1,30 @@
-package dev.demmage.context4j;
+package dev.demmage.context4j.factory;
 
 import dev.demmage.context4j.exceptions.MultipleImplementationsException;
 import dev.demmage.context4j.exceptions.NoSuchImplementationException;
 import dev.demmage.context4j.exceptions.NotImplementedException;
+import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class DefaultContextConfig implements ContextConfig {
+public class ObjectFactory {
 
-    private Reflections scanner;
-    private Map<Class<?>, Class<?>> interface2ImplClass;
+    private final Reflections scanner = new Reflections();
+    private final Map<Class<?>, Class<?>> interface2ImplClass = new HashMap<>();
 
-    public DefaultContextConfig(String packageToScan, Map<Class<?>, Class<?>> interface2ImplClass) {
-        this.interface2ImplClass = interface2ImplClass;
-        this.scanner = new Reflections(packageToScan);
+    @SneakyThrows
+    public <T> T createComponent(Class<T> type) {
+        Class<? extends T> implClass = type;
+        if (type.isInterface()) {
+            implClass = getImplClass(type, null);
+        }
+
+        return implClass.getDeclaredConstructor().newInstance();
     }
 
-    @Override
     public <T> Class<? extends T> getImplClass(Class<T> type, String qualifier) {
         return (Class<? extends T>) interface2ImplClass.computeIfAbsent(type, clazz -> {
             Set<Class<? extends T>> classes = scanner.getSubTypesOf(type);

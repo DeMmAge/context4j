@@ -3,7 +3,7 @@ package dev.demmage.context4j.annotations;
 import java.lang.annotation.*;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 @Inherited
-public @interface Inject {
+public @interface Config {
 }
