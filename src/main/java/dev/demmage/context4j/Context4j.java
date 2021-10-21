@@ -1,15 +1,15 @@
 package dev.demmage.context4j;
 
+import dev.demmage.context4j.config.ConfigurationParser;
 import dev.demmage.context4j.config.Context4jConfiguration;
 import dev.demmage.context4j.exceptions.Context4jNotInitializedException;
-import dev.demmage.context4j.scan.ConfigurationScanner;
 
 import java.util.Collection;
 
 public class Context4j {
 
     private static Context context;
-    private static final Context4jConfiguration configuration = new ConfigurationScanner().getConfiguration();
+    private static final Context4jConfiguration configuration = new ConfigurationParser().parse();
 
     private Context4j() {
 

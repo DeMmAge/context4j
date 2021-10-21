@@ -4,9 +4,9 @@ import dev.demmage.context4j.annotations.Component;
 
 import java.util.Set;
 
-public class ComponentsScanner extends Scanner {
+public class ComponentsScanner {
 
     public Set<Class<?>> getComponents() {
-        return reflections.getTypesAnnotatedWith(Component.class);
+        return ReflectionsConfigurer.getReflections().getTypesAnnotatedWith(Component.class);
     }
 }

@@ -11,26 +11,26 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Deprecated
-public class PackageScanner extends Scanner {
+public class PackageScanner {
 
     public Configuration getConfiguration() {
-        return reflections.getConfiguration();
+        return ReflectionsConfigurer.getReflections().getConfiguration();
     }
 
     public Set<Class<?>> getComponents() {
-        return reflections.getTypesAnnotatedWith(Component.class);
+        return ReflectionsConfigurer.getReflections().getTypesAnnotatedWith(Component.class);
     }
 
     public Set<Class<?>> getAnnotatedTypes(Class<? extends Annotation> annotation) {
-        return reflections.getTypesAnnotatedWith(annotation);
+        return ReflectionsConfigurer.getReflections().getTypesAnnotatedWith(annotation);
     }
 
     public Set<Field> getAnnotatedFields(Annotation annotation) {
-        return reflections.getFieldsAnnotatedWith(annotation);
+        return ReflectionsConfigurer.getReflections().getFieldsAnnotatedWith(annotation);
     }
 
     public Set<ComponentProcessor> getProcessors() {
-        return reflections.getSubTypesOf(ComponentProcessor.class).stream().map(c -> {
+        return ReflectionsConfigurer.getReflections().getSubTypesOf(ComponentProcessor.class).stream().map(c -> {
             try {
                 return (ComponentProcessor) c.newInstance();
             } catch (Exception e) {

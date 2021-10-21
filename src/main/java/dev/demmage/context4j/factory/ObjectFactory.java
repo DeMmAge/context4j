@@ -3,6 +3,7 @@ package dev.demmage.context4j.factory;
 import dev.demmage.context4j.exceptions.MultipleImplementationsException;
 import dev.demmage.context4j.exceptions.NoSuchImplementationException;
 import dev.demmage.context4j.exceptions.NotImplementedException;
+import dev.demmage.context4j.scan.ReflectionsConfigurer;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 
 public class ObjectFactory {
 
-    private final Reflections scanner = new Reflections();
+    private final Reflections scanner = ReflectionsConfigurer.getReflections();
     private final Map<Class<?>, Class<?>> interface2ImplClass = new HashMap<>();
 
     @SneakyThrows

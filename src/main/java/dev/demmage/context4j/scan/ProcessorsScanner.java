@@ -6,10 +6,10 @@ import dev.demmage.context4j.processor.ComponentProcessor;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ProcessorsScanner extends Scanner {
+public class ProcessorsScanner {
 
     public Set<ComponentProcessor> getProcessors() {
-        return reflections.getSubTypesOf(ComponentProcessor.class).stream().map(c -> {
+        return ReflectionsConfigurer.getReflections().getSubTypesOf(ComponentProcessor.class).stream().map(c -> {
             try {
                 return c.newInstance();
             } catch (Exception e) {

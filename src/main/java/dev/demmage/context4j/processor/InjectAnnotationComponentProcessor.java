@@ -2,7 +2,7 @@ package dev.demmage.context4j.processor;
 
 import dev.demmage.context4j.Context4j;
 import dev.demmage.context4j.annotations.Inject;
-import dev.demmage.context4j.exceptions.ComponentInjectionException;
+import dev.demmage.context4j.exceptions.processor.ComponentInjectionException;
 
 import java.util.Arrays;
 

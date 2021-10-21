@@ -1,4 +1,6 @@
-package dev.demmage.context4j.exceptions;
+package dev.demmage.context4j.exceptions.processor;
+
+import dev.demmage.context4j.exceptions.Context4jException;
 
 public class ComponentInjectionException extends Context4jException {
 

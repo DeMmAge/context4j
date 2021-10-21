@@ -4,6 +4,8 @@ out/
 !**/src/test/**/target/
 mvn*
 .mvn/
+src/main/java/dev/demmage/context4j/test/
+src/main/resources/
 
 ### STS ###
 .apt_generated
