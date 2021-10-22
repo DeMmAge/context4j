@@ -1,4 +1,4 @@
-package dev.demmage.context4j.exceptions.processor;
+package dev.demmage.context4j.processor.exceptions;
 
 import dev.demmage.context4j.exceptions.Context4jException;
 
