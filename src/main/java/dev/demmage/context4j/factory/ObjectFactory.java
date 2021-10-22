@@ -7,6 +7,7 @@ import dev.demmage.context4j.scan.ReflectionsConfigurer;
 import lombok.SneakyThrows;
 import org.reflections.Reflections;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -17,13 +18,13 @@ public class ObjectFactory {
     private final Map<Class<?>, Class<?>> interface2ImplClass = new HashMap<>();
 
     @SneakyThrows
-    public <T> T createComponent(Class<T> type) {
+    public <T> T createComponent(Class<T> type, @Nullable Object... constructorParams) {
         Class<? extends T> implClass = type;
         if (type.isInterface()) {
             implClass = getImplClass(type, null);
         }
 
-        return implClass.getDeclaredConstructor().newInstance();
+        return implClass.getDeclaredConstructor().newInstance(constructorParams);
     }
 
     public <T> Class<? extends T> getImplClass(Class<T> type, String qualifier) {

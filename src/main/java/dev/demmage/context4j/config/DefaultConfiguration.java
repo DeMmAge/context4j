@@ -1,6 +1,6 @@
 package dev.demmage.context4j.config;
 
-public class DefaultContext4jConfiguration implements Context4jConfiguration {
+public class DefaultConfiguration implements Configuration {
 
     @Override
     public String[] getPackages() {

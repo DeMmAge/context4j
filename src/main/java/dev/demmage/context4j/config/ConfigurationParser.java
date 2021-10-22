@@ -5,8 +5,8 @@ import java.util.Properties;
 
 public class ConfigurationParser {
 
-    public Context4jConfiguration parse() {
-        DefaultContext4jConfiguration defaultConfig = new DefaultContext4jConfiguration();
+    public Configuration parse() {
+        DefaultConfiguration defaultConfig = new DefaultConfiguration();
         Properties properties = new Properties();
 
         try (InputStream stream = getClass().getClassLoader().getResourceAsStream("context4j.properties")) {
@@ -15,7 +15,7 @@ public class ConfigurationParser {
             return defaultConfig;
         }
 
-        return new Context4jConfiguration() {
+        return new Configuration() {
             @Override
             public String[] getPackages() {
                 return properties.getProperty("packages", "").split(",");

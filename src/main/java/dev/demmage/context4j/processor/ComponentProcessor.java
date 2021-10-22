@@ -2,8 +2,11 @@ package dev.demmage.context4j.processor;
 
 public interface ComponentProcessor {
 
-    // TODO: 20.10.2021
-    //void processBeforeInitialization(Object o);
+    default Object processBeforeInitialization(Object o) {
+        return o;
+    }
 
-    void processAfterInitialization(Object o);
+    default Object processAfterInitialization(Object o) {
+        return o;
+    }
 }
