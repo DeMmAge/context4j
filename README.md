@@ -1,5 +1,13 @@
 # Context4j
 
+```xml
+<dependency>
+  <groupId>dev.demmage</groupId>
+  <artifactId>context4j</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+</dependency>
+```
+
 ## Examples
 
 ### Quick Start
